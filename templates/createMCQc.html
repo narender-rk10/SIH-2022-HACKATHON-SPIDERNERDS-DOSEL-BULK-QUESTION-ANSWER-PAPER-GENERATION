@@ -1,0 +1,127 @@
+{% extends 'ContributorDashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                        {% if msg == "0" %}
+                        <div class="alert alert-danger" role="alert">
+                            Some error was occurred!
+                        </div>
+                        {% endif %}
+                        {% if msg == "1" %}
+                        <div class="alert alert-success" role="alert">
+                            MCQ added successfully!
+                        </div>
+                        {% endif %}
+                        <h3 class="h3 text-center">Add Topic</h3>
+                    </div>
+                    <center>
+                        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ihsy8p2a.json"
+                            background="transparent" speed="1" style="width: 400px; height: 300px;" loop autoplay>
+                        </lottie-player>
+                    </center>
+                    <div class="card-body">
+                        <form action="/create-mcq-c" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <div class="form-group">
+                                    <label for="project-name">Select Subject:</label>
+                                    <select name="s_id" class="custom-select my-1 mr-sm-2" id="b_id">
+                                        <option value="0" selected>Select</option>
+                                        {% for b in msg1 %}
+                                        <option value="{{b.id}}">{{b.s_name.upper}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project-name">Select Topic:</label>
+                                    <select name="topic_id" class="custom-select my-1 mr-sm-2" id="b_id">
+                                        <option value="0" selected>Select Topic</option>
+                                        {% for b in msg2 %}
+                                        <option value="{{b.id}}">{{b.t_name.upper}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group mb-4">
+                                    <label for="Topic">Question</label>
+                                    <div class="input-group">
+                                        <input type="text" name="question" class="form-control"
+                                            placeholder="Enter Your Question" id="topic" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="Option 1">Option 1</label>
+                                    <div class="input-group">
+                                        <input type="text" name="op1" class="form-control"
+                                            placeholder="Enter Your Option 1" id="op1" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="Option 1">Option 2</label>
+                                    <div class="input-group">
+                                        <input type="text" name="op2" class="form-control"
+                                            placeholder="Enter Your Option 2" id="op2" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="Option 1">Option 3</label>
+                                    <div class="input-group">
+                                        <input type="text" name="op3" class="form-control"
+                                            placeholder="Enter Your Option 3" id="op3" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="Option 1">Option 4</label>
+                                    <div class="input-group">
+                                        <input type="text" name="op4" class="form-control"
+                                            placeholder="Enter Your Option 4" id="op4" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project-name">Select Subject:</label>
+                                    <select name="correct_ans" class="custom-select my-1 mr-sm-2" id="b_id">
+                                        <option value="0" selected>Select Correct Answer</option>
+                                        <option value="a">Option 1</option>
+                                        <option value="b">Option 2</option>
+                                        <option value="c">Option 3</option>
+                                        <option value="d">Option 4</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="Expalnation">Explanation</label>
+                                    <div class="input-group">
+                                        <input type="text" name="explanation" class="form-control"
+                                            placeholder="Enter Your Explanation" id="exp" autofocus required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="project-name">Select Level:</label>
+                                    <select name="level" class="custom-select my-1 mr-sm-2" id="b_id">
+                                        <option value="0">Easy</option>
+                                        <option value="1">Medium</option>
+                                        <option value="2">Hard</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" class="btn btn-primary" value="Add Question">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

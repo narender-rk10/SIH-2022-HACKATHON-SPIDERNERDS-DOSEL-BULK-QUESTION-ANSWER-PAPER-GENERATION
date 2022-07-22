@@ -1,0 +1,19 @@
+{% extends 'ExpertsDashboard.html' %}
+
+{% block body %}
+
+{% if msg == "0" %}
+<h1>
+    <center>
+        <font color="green"> <b> Rejected </b> </font>
+    </center>
+</h1>
+{% elif msg == "3" %}
+<h1>
+    <center>
+        <font color="green"> <b> Error </b> </font>
+    </center>
+</h1>
+{%endif%}
+
+{% endblock %}

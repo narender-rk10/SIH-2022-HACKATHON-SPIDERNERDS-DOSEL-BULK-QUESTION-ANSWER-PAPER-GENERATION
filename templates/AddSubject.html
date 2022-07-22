@@ -1,0 +1,44 @@
+{% extends 'BoardDashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">
+                <div class="row mb-4">
+                    <div class="col-lg-12 col-sm-16">
+                        {% if msg == "0" %}
+                        <div class="alert alert-danger" role="alert">
+                            Some error was occurred!
+                        </div>
+                        {% endif %}
+                        {% if msg == "1" %}
+                        <div class="alert alert-success" role="alert">
+                            Subject added successfully!
+                        </div>
+                        {% endif %}
+                        <h3 class="h3 text-center">Add Subject</h3>
+                    </div>
+                    <center>
+                        <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_ihsy8p2a.json"
+                            background="transparent" speed="1" style="width: 400px; height: 300px;" loop autoplay>
+                        </lottie-player>
+                    </center>
+                    <div class="card-body">
+                        <form action="/add-sub" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <div class="form-group">
+                                    <label class="h6" for="exampleFormControlTextarea1">Subject Name:</label>
+
+                                    <input type="text" name="s_name" class="form-control" placeholder="Name of Subject"
+                                        required>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Add">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

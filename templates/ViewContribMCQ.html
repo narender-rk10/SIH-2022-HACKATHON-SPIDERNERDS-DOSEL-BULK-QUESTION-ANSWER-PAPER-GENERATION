@@ -1,0 +1,89 @@
+{% extends 'ContributorDashboard.html' %}
+{% block body %}
+<div class="row align-items-center d-flex  justify-content-center">
+    <div class="col-12 mb-4">
+        <div class="card border-light shadow-sm components-section align-items-center d-flex  justify-content-center">
+            <div class="card-body align-items-center d-flex justify-content-center">
+                <div class="row mb-4">
+                    {% if msg is not none and msg %}
+                    <div class="col-lg-12 col-sm-16">
+                        <h3 class="h3 text-center">View MCQs</h3>
+                    </div>
+                    <center>
+                        <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_hdiNFs.json"
+                            background="transparent" speed="1" style="width: 400px; height: 300px;" loop autoplay>
+                        </lottie-player>
+                    </center>
+                    <div class="table-responsive">
+
+                        {% for a in msg %}
+
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Question</b><span> {{a.question}}</span></h5>
+                                <p class="card-text"><b>Option 1.</b> {{a.option_1}}.</p>
+                                <p class="card-text"><b>Option 2.</b> {{a.option_2}}.</p>
+                                <p class="card-text"><b>Option 3.</b> {{a.option_3}}.</p>
+                                <p class="card-text"><b>Option 4.</b> {{a.option_4}}.</p>
+                                <p class="card-text"><b>Correct Answer.</b> {{a.correct_ans}}.</p>
+                                <p class="card-text"><b>Explaination</b> {{a.explanation}}.</p>
+                                <p class="card-text">
+                                    <b>Status</b>
+                                    {% if a.status == "0" %}
+                                    <td> Rejected </td>
+                                    {% elif a.status == "1" %}
+                                    <td> Accepted</td>
+                                    {% elif a.status == "2" %}
+                                    <td> Pending</td>
+                                    {% endif %}
+                                    .
+                                </p>
+                                <p class="card-text">
+                                    <b>Level</b>
+                                    {% if a.level == "0" %}
+                                    <td> Easy </td>
+                                    {% elif a.level == "1" %}
+                                    <td> Medium</td>
+                                    {% elif a.level == "2" %}
+                                    <td> Hard</td>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </div> ` `
+
+
+
+                        {% endfor %}
+
+                    </div>
+                    {% else %}
+                    <div class="col-lg-12 col-sm-16">
+                        <center>
+                            <lottie-player src="https://assets7.lottiefiles.com/datafiles/vhvOcuUkH41HdrL/data.json"
+                                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+                            </lottie-player>
+                        </center>
+                        <h3 class="h3 text-center">
+                            No Records Found!
+                        </h3>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+    });
+</script>
+
+
+{% endblock %}
