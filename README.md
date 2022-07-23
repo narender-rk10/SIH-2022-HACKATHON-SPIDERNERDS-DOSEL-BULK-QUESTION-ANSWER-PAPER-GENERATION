@@ -34,7 +34,7 @@ getting spammed as we verify the legitimacy of contributors
 <pre>
 <code>
 
-Change credentials in <a rel="license" href=https://github.com/narender-rk10/SIH-2022-HACKATHON-SPIDERNERDS-DOSEL-BULK-QUESTION-ANSWER-PAPER-GENERATION/blob/06089244cc0cf2ad150f7b7f2ce61bd0c0233e15/spidernerds/settings.py">settings.py</a> for email & database.
+Change credentials in <a rel="license" href="https://github.com/narender-rk10/SIH-2022-HACKATHON-SPIDERNERDS-DOSEL-BULK-QUESTION-ANSWER-PAPER-GENERATION/blob/master/spidernerds/settings.py">settings.py</a> for email & database.
 
 python manage.py makemigrations
 python manage.py migrate
